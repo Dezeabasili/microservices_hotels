@@ -66,7 +66,7 @@ pipeline {
                     script {
                     sh '''
                         # Fix the sed command to replace the entire line
-                        sed -i "s|image:.*|image: doneze/hotelservices:${DOCKER_TAG}|" \
+                        sed -i "s|image:.*|image: $DOCKER_HUB_REPO:${DOCKER_TAG}|" \
                             kubernetes-manifests/microservices-folders/hotels/hotels-deployment.yaml
 
                         echo "$NEW_PATCH_VERSION" > tags_folder/hotel_services/patch_version.txt
